@@ -1,0 +1,19 @@
+{
+  "name": "heshop",
+  "version": "1.0.0",
+  "description": "mini-ecomerce",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./dist/app.js"
+  },
+  "author": "Achu-BSL",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.4.8"
+  }
+}
