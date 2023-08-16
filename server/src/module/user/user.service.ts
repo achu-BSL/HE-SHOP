@@ -1,9 +1,11 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
+import { Prisma, User } from "@prisma/client";
+import { PrismaService } from "src/prisma.service";
 
 
 @Injectable()
 export class UserService {
-
+  constructor(private readonly prisma: PrismaService) {}
   /**
    * Register new user
    * 
@@ -11,9 +13,13 @@ export class UserService {
    * @param email 
    * @param password 
    */
-  register (username: string, email: string, password: string) {
-    //? Create user Logic
-    return ''
+  async register (data: Prisma.UserCreateInput): Promise<User> {
+    const isExist = await this.prisma.user.findFirst({
+      where: {username: data.username}
+    })
+    if(isExist) throw new BadRequestException();
+    const user = await this.prisma.user.create({data})
+    return user;
   }
 
   /**
@@ -23,7 +29,11 @@ export class UserService {
    * @param password - The user password for verify user.
    * @returns 
    */
-  login (username: string, password: string) {
-    return {username, password};
+  async login (username: string, password: string) {
+    const user = await this.prisma.user.findFirst({
+      where: {username, password}
+    })
+    if(!user) throw new BadRequestException();
+    return user;
   }
 }

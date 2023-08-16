@@ -3,7 +3,7 @@ import { UserService } from "./user.service";
 import { RegisterUserDto } from "./dto/register-user.dto";
 import { LoginUserDto } from "./dto/login-user.dto";
 
-@Controller("")
+@Controller()
 export class UserController {
     constructor(private readonly userService: UserService) {}
 
@@ -11,9 +11,10 @@ export class UserController {
      * Register Controller.
      * @param {RegisterUserDto} credential
      */
-    @Post()
+    @Post("register")
     Register (@Body() credential: RegisterUserDto) {
-      this.userService.register(credential.username, credential.email, credential.password);
+      console.log("From register router.");
+      this.userService.register(credential);
     }
   
     /**
