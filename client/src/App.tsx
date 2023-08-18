@@ -1,15 +1,14 @@
-import React from "react";
+import { FC } from "react";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { NavBar } from "./components/NavBar";
-import { Login } from "./pages/user/Login";
-import { Register } from "./pages/user/Register";
+import { router } from "./router/route.router";
 
-function App() {
+const App: FC = () => {
   return (
     <>
-    <NavBar/>
-    <Register/>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <NavBar />
+      <RouterProvider router={router} />
     </>
   );
 }

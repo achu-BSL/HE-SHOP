@@ -1,6 +1,6 @@
-import React from 'react';
+import { FC } from 'react';
 
-export function NavBar () {
+export const  NavBar: FC = () => {
     return (
         <nav className="bg-blue-950 p-4 sticky">
         <div className="container">
