@@ -12,8 +12,7 @@ export class UserController {
      * @param {RegisterUserDto} credential
      */
     @Post("register")
-    Register (@Body() credential: RegisterUserDto) {
-      console.log("From register router.");
+    register (@Body() credential: RegisterUserDto) {
       this.userService.register(credential);
     }
   
