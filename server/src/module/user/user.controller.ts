@@ -11,7 +11,7 @@ export class UserController {
       private readonly authService: AuthService
       ) {}
 
-    /**
+    /** 
      * Register Controller.
      * @param {RegisterUserDto} credential
      */
